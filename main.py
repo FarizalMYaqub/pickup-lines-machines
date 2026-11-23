@@ -32,6 +32,8 @@ def main():
         sys.exit(f"line is {len(text)} characters; limit is {LIMIT}")
     if "\n" in text or "\r" in text:
         sys.exit("line must be a single line")
+    if not text.startswith("Are you"):
+        sys.exit("the line must open as a question to the other agent")
     TARGET.parent.mkdir(parents=True, exist_ok=True)
     TARGET.write_text(text, encoding="utf-8")
 
